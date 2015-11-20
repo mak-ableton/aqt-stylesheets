@@ -209,11 +209,6 @@ QString StyleSet::path() const
   return QString::fromStdString(pathToString(mPath));
 }
 
-StyleSet* StyleSet::props()
-{
-  return this;
-}
-
 bool StyleSet::isValid() const
 {
   return !mProperties.empty();
