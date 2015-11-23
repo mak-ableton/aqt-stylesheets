@@ -433,6 +433,8 @@ public:
   QString path() const;
   StyleSet* props();
 
+  StyleSet* style();
+
   QString styleInfo() const;
 
   void updateStyle();

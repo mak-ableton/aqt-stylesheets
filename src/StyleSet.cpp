@@ -146,7 +146,7 @@ public:
     if (pStyleSetAttached) {
       pStyleSetAttached->updateStyle();
 
-      if (StyleSet* pStyle = pStyleSetAttached->props()) {
+      if (StyleSet* pStyle = pStyleSetAttached->style()) {
         mergeInheritableProperties(mPropertyMap, pStyle->properties(mCurrentChangeCount));
 
         // since our ancestors style should have been compiled already, stop
@@ -462,6 +462,11 @@ QString StyleSetAttached::styleInfo() const
 }
 
 StyleSet* StyleSetAttached::props()
+{
+  return &mStyle;
+}
+
+StyleSet* StyleSetAttached::style()
 {
   return &mStyle;
 }
