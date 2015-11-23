@@ -369,6 +369,7 @@ StyleSetAttached::StyleSetAttached(QObject* pParent)
   : QObject(pParent)
   , mpEngine(StyleEngineHost::globalStyleEngine())
   , mStyle(this)
+  , mProps(&mStyle)
 {
   QQmlEngine::setObjectOwnership(&mStyle, QQmlEngine::CppOwnership);
 
@@ -461,9 +462,9 @@ QString StyleSetAttached::styleInfo() const
   return QString::fromStdString(styleInfoStr);
 }
 
-StyleSet* StyleSetAttached::props()
+QVariant StyleSetAttached::props()
 {
-  return &mStyle;
+  return QVariant::fromValue(mProps);
 }
 
 StyleSet* StyleSetAttached::style()

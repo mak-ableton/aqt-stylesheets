@@ -54,6 +54,8 @@ add_library(StylePlugin MODULE
   StyleSet.cpp
   StyleSet.hpp
   StyleSet.ipp
+  StyleSetProps.cpp
+  StyleSetProps.hpp
   StylesDirWatcher.cpp
   StylesDirWatcher.hpp
 )

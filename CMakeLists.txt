@@ -72,10 +72,10 @@ set(CMAKE_MACOSX_RPATH ON)
 
 enable_testing()
 
-find_package(Qt5Quick 5.3.0 REQUIRED)
-find_package(Qt5Qml 5.3.0 REQUIRED)
-find_package(Qt5Test 5.3.0 REQUIRED)
-find_package(Qt5QuickTest 5.3.0 REQUIRED)
+find_package(Qt5Quick 5.5.0 REQUIRED)
+find_package(Qt5Qml 5.5.0 REQUIRED)
+find_package(Qt5Test 5.5.0 REQUIRED)
+find_package(Qt5QuickTest 5.5.0 REQUIRED)
 
 if(DEFINED Boost_INCLUDE_DIR)
   get_filename_component(Boost_INCLUDE_DIR ${Boost_INCLUDE_DIR} ABSOLUTE)

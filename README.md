@@ -19,7 +19,7 @@ fewer lines of code through selectors that apply across many components.
 
 Dependencies:
 
-  - Qt (>= 5.3)
+  - Qt (>= 5.5)
   - Boost (>= 1.54)
   - CMake (>= 2.8.12)
 
@@ -63,7 +63,7 @@ to the Qt installation prefix. See the
 Example:
 
 ```
-  cmake .. -DCMAKE_PREFIX_PATH=~/Qt/Qt5.3.1/clang_64 \
+  cmake .. -DCMAKE_PREFIX_PATH=~/Qt/Qt5.5.0/clang_64 \
   -DGTEST_SOURCE=~/Dev/googletest -DBoost_INCLUDE_DIR=/opt/local/include/
 ```
 
