@@ -4,7 +4,7 @@ import QtQuick 2.3
 import QtTest 1.0
 import QtQuick.Layouts 1.1
 
-import Aqt.StyleSheets 1.2
+import Aqt.StyleSheets 1.1
 import Aqt.Testing 1.0 as AqtTests
 
 Item {

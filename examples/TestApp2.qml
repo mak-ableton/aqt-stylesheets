@@ -22,7 +22,7 @@ import QtQuick 2.3
 import QtQuick.Controls 1.2
 import QtQuick.Layouts 1.1
 
-import Aqt.StyleSheets 1.2
+import Aqt.StyleSheets 1.1
 
 ApplicationWindow {
     width: 500
