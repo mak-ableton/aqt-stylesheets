@@ -68,7 +68,7 @@ std::string typeName(QObject* obj)
 std::vector<std::string> styleClassName(QObject* pObj)
 {
   StyleSetAttached* pStyleSetAttached =
-    qobject_cast<StyleSetAttached*>(qmlAttachedPropertiesObject<StyleSet>(pObj, false));
+    qobject_cast<StyleSetAttached*>(qmlAttachedPropertiesObject<StyleSetAttached>(pObj, false));
 
   std::vector<std::string> classNames;
 
@@ -141,7 +141,7 @@ public:
   bool operator()(QObject* pObj)
   {
     StyleSetAttached* pStyleSetAttached =
-      qobject_cast<StyleSetAttached*>(qmlAttachedPropertiesObject<StyleSet>(pObj, false));
+      qobject_cast<StyleSetAttached*>(qmlAttachedPropertiesObject<StyleSetAttached>(pObj, false));
 
     if (pStyleSetAttached) {
       pStyleSetAttached->updateStyle();
@@ -197,11 +197,6 @@ void StyleSet::initStyleSet(const UiItemPath& path, StyleEngine* pEngine)
 
     loadProperties(parent());
   }
-}
-
-StyleSetAttached* StyleSet::qmlAttachedProperties(QObject* pObject)
-{
-  return new StyleSetAttached(pObject);
 }
 
 bool StyleSet::isValid() const
@@ -398,6 +393,11 @@ StyleSetAttached::StyleSetAttached(QObject* pParent)
 
     setupStyle();
   }
+}
+
+StyleSetAttached* StyleSetAttached::qmlAttachedProperties(QObject* pObject)
+{
+  return new StyleSetAttached(pObject);
 }
 
 void StyleSetAttached::onStyleEngineChanged(StyleEngine* pEngine)

@@ -74,8 +74,6 @@ public:
 
   void loadProperties(QObject* pRefObject);
 
-  static StyleSetAttached* qmlAttachedProperties(QObject* pObject);
-
   const PropertyMap& properties(int changeCount);
 
 public Q_SLOTS:
@@ -228,6 +226,8 @@ class StyleSetAttached : public QObject
 public:
   explicit StyleSetAttached(QObject* pParent = nullptr);
 
+  static StyleSetAttached* qmlAttachedProperties(QObject* pObject);
+
   QString name() const;
   void setName(const QString& val);
 
@@ -282,7 +282,7 @@ private:
 } // namespace stylesheets
 } // namespace aqt
 
-QML_DECLARE_TYPEINFO(aqt::stylesheets::StyleSet, QML_HAS_ATTACHED_PROPERTIES)
+QML_DECLARE_TYPEINFO(aqt::stylesheets::StyleSetAttached, QML_HAS_ATTACHED_PROPERTIES)
 
 // include the header implementations
 #include "StyleSet.ipp"
