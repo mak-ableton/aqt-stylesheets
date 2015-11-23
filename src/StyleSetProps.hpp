@@ -94,10 +94,8 @@ public:
    *   color: StyleSet.props.values("clip-colors")[clipColorId]
    * }
    * @endcode
-   *
-   * @since 1.2
    */
-  Q_REVISION(2) Q_INVOKABLE QVariant values(const QString& key) const;
+  Q_INVOKABLE QVariant values(const QString& key) const;
 
   /*! Returns the style property @p key as a @c QColor.
    *
@@ -239,10 +237,8 @@ public:
    *       always return a single value only, where get() might return a list of
    *       strings.  This accessor should be used therefore when a single string
    *       is expected.
-   *
-   * @since 1.2
    */
-  Q_REVISION(2) Q_INVOKABLE QString string(const QString& key) const;
+  Q_INVOKABLE QString string(const QString& key) const;
 
   /*! Returns the style property @p key as a URL/URI
    *
@@ -262,10 +258,8 @@ public:
    *   source: StyleSet.props.url("icon")
    * }
    * @endcode
-   *
-   * @since 1.2
    */
-  Q_REVISION(2) Q_INVOKABLE QUrl url(const QString& key) const;
+  Q_INVOKABLE QUrl url(const QString& key) const;
 
 private:
   QPointer<StyleSet> mpStyleSet;
