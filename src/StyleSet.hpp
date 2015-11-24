@@ -443,7 +443,6 @@ private:
   QPointer<StyleEngine> mpEngine;
   UiItemPath mPath;
   PropertyMap mProperties;
-  int mChangeCount;
   /*! @endcond */
 };
 
