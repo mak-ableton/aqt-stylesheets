@@ -200,8 +200,6 @@ public:
   /*! @cond DOXYGEN_IGNORE */
   explicit StyleEngine(QObject* pParent = nullptr);
 
-  int changeCount() const;
-
   QUrl styleSheetSource() const;
   void setStyleSheetSource(const QUrl& url);
 
@@ -259,7 +257,7 @@ public:
 
 Q_SIGNALS:
   /*! Fires when the style sheet is replaced or changed on the disk */
-  void styleChanged(int changeCount);
+  void styleChanged();
   /*! Fires when a new style sheet file name is set to the styleName property */
   void styleNameChanged();
   /*! Fires when a new default style sheet file name is set to the styleName
@@ -332,7 +330,6 @@ private:
 
   std::unique_ptr<IStyleMatchTree> mpStyleTree;
   QFileSystemWatcher mFsWatcher;
-  int mChangeCount;
   StyleEngineHost::FontIdCache& mFontIdCache;
 
   StylesDirWatcher mStylesDir;
