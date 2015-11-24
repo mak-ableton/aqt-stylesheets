@@ -469,8 +469,6 @@ public:
 
   QString styleInfo() const;
 
-  void updateStyle();
-
 Q_SIGNALS:
   void propsChanged();
   void nameChanged(const QString& name);
