@@ -87,15 +87,11 @@ T traverseParentChain(QObject* pObj, ObjVisitor visitor)
   QObject* p = pObj;
   while (p) {
     if (visitor(p)) {
-      QObject* nextp = nullptr;
-
+      QObject* nextp = p->parent();
       if (QQuickItem* pItem = qobject_cast<QQuickItem*>(p)) {
         if (QQuickItem* pParentItem = pItem->parentItem()) {
           nextp = pParentItem;
         }
-      }
-      if (!nextp) {
-        nextp = p->parent();
       }
       p = nextp;
     } else {
