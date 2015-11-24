@@ -126,4 +126,20 @@ Item {
             });
         }
     }
+
+
+    TestCase {
+        name: "changing the name of a parent updates the child"
+
+        function test_propertyInheritance_changeNameOfParentUpdatesChild() {
+            AqtTests.Utils.withComponent(styledSceneComponent, scene, {}, function(a) {
+                // Sanity check / show state prior to name change
+                compare(a.b.c.StyleSet.props.string("forEveryone"), "B>C");
+
+                a.b.name = "custom";
+                expectFail("", "Bug: Children don't get notified when a (grand)parent's name changes");
+                compare(a.b.c.StyleSet.props.string("forEveryone"), "customC");
+            });
+        }
+    }
 }
