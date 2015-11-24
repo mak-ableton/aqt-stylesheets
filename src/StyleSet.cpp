@@ -305,16 +305,9 @@ void StyleSet::loadProperties()
 {
   using std::begin;
   using std::end;
-  using std::prev;
 
   if (mpEngine) {
-    mProperties = mpEngine->matchPath(begin(mPath), end(mPath));
-
-    if (!mPath.empty()) {
-      PropertyMap inheritedProps(
-        effectivePropertyMap(begin(mPath), prev(end(mPath)), *mpEngine));
-      mergeInheritableProperties(mProperties, inheritedProps);
-    }
+    mProperties = effectivePropertyMap(begin(mPath), end(mPath), *mpEngine);
 
     QObject* pParent = parent();
     if (qobject_cast<StyleSetAttached*>(pParent) != nullptr) {
