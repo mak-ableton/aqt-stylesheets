@@ -28,11 +28,11 @@ THE SOFTWARE.
 #include "Warnings.hpp"
 
 SUPPRESS_WARNINGS
+#include <QtCore/QHash>
 #include <QtCore/QString>
 #include <QtCore/QVariant>
 RESTORE_WARNINGS
 
-#include <map>
 #include <memory>
 #include <string>
 #include <unordered_map>
@@ -43,6 +43,15 @@ namespace aqt
 {
 namespace stylesheets
 {
+namespace detail
+{
+struct QStringHasher {
+  std::size_t operator()(const QString& s) const
+  {
+    return qHash(s);
+  }
+};
+}
 class PathElement
 {
 public:
@@ -72,7 +81,7 @@ using UiItemPath = std::vector<PathElement>;
 std::ostream& operator<<(std::ostream& os, const UiItemPath& path);
 std::string pathToString(const UiItemPath& path);
 
-using PropertyMap = std::map<QString, Property>;
+using PropertyMap = std::unordered_map<QString, Property, detail::QStringHasher>;
 
 void mergeInheritableProperties(PropertyMap& dest, const PropertyMap& b);
 
