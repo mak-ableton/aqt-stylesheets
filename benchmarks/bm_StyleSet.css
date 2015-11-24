@@ -1,0 +1,40 @@
+/* Copyright (c) 2015 Ableton AG, Berlin */
+
+.A {
+  someThing: "a"
+  another: "A"
+}
+
+.B {
+  someThing: "b"
+  another: "B"
+}
+
+.C {
+  someThing: "c"
+  another: "C"
+}
+
+.D {
+  someThing: "d"
+  another: "D"
+}
+
+.A .B {
+  someThing: "ab"
+  another: "AB"
+}
+
+.A .B .C {
+  someThing: "abc"
+  another: "ABC"
+}
+
+.A .B .C .D{
+  someThing: "abcd"
+  another: "ABCD"
+}
+
+.A .B .C .D QQuickRectangle {
+  background: red;
+}
