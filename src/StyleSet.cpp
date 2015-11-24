@@ -319,11 +319,9 @@ QUrl StyleSet::url(const QString& key) const
   return url;
 }
 
-void StyleSet::onStyleChanged(int changeCount)
+void StyleSet::onStyleChanged(int)
 {
-  if (mChangeCount != changeCount) {
-    loadProperties(parent());
-  }
+  loadProperties(parent());
 }
 
 void StyleSet::loadProperties(QObject* pRefObject)
