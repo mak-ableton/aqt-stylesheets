@@ -327,7 +327,7 @@ void StyleSet::onStyleChanged(int)
 void StyleSet::loadProperties(QObject* pRefObject)
 {
   if (mpEngine) {
-    mProperties = mpEngine->matchPath(mPath);
+    mProperties = mpEngine->matchPath(begin(mPath), end(mPath));
     mChangeCount = mpEngine->changeCount();
 
     if (pRefObject) {

@@ -239,11 +239,13 @@ public:
 
   /*! Matches an element path
    *
-   * The element path @p path is matched against the rules loaded from the
-   * current style sheet.  The resulting set of properties is returned.  If
-   * the path is not matching any rule the result is an empty property map.
+   * The element path [@p pathBegin, @p pathEnd) is matched against the rules
+   * loaded from the current style sheet.  The resulting set of properties is
+   * returned.  If the path is not matching any rule the result is an empty
+   * property map.
    */
-  PropertyMap matchPath(const UiItemPath& path);
+  PropertyMap matchPath(UiItemPath::const_iterator pathBegin,
+                        UiItemPath::const_iterator pathEnd);
 
   /*! @private */
   std::string describeMatchedPath(const UiItemPath& path);

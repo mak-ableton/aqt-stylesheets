@@ -472,14 +472,18 @@ void findDescendantMatchOnNode(MatchResult& result,
   }
 }
 
-MatchResult findMatchingRules(const StyleMatchTree& tree, const UiItemPath& path)
+MatchResult findMatchingRules(const StyleMatchTree& tree,
+                              UiItemPath::const_iterator pathBegin,
+                              UiItemPath::const_iterator pathEnd)
 {
   MatchResult result;
 
-  UiItemPath::const_reverse_iterator pathEltIter = path.rbegin();
-  if (pathEltIter != path.rend()) {
+  auto pathEltIter = UiItemPath::const_reverse_iterator{pathEnd};
+  auto rend = UiItemPath::const_reverse_iterator{pathBegin};
+
+  if (pathEltIter != rend) {
     findMatchOnNode(result, Specificity(), tree.rootMatches.get(), *pathEltIter,
-                    std::next(pathEltIter), path.rend());
+                    std::next(pathEltIter), rend);
   }
 
   return result;
@@ -599,9 +603,12 @@ void dumpMatchResults(const MatchResult& result, std::ostream& stream = std::cou
 
 std::string describeMatchedPath(const IStyleMatchTree* itree, const UiItemPath& path)
 {
+  using std::begin;
+  using std::end;
+
   const StyleMatchTree& tree = *static_cast<const StyleMatchTree*>(itree);
 
-  MatchResult result = findMatchingRules(tree, path);
+  MatchResult result = findMatchingRules(tree, begin(path), end(path));
   sortMatchResults(result);
   std::reverse(result.begin(), result.end());
 
@@ -612,11 +619,13 @@ std::string describeMatchedPath(const IStyleMatchTree* itree, const UiItemPath& 
   return stream.str();
 }
 
-PropertyMap matchPath(const IStyleMatchTree* itree, const UiItemPath& path)
+PropertyMap matchPath(const IStyleMatchTree* itree,
+                      UiItemPath::const_iterator pathBegin,
+                      UiItemPath::const_iterator pathEnd)
 {
   const StyleMatchTree& tree = *static_cast<const StyleMatchTree*>(itree);
 
-  MatchResult result = findMatchingRules(tree, path);
+  MatchResult result = findMatchingRules(tree, pathBegin, pathEnd);
   sortMatchResults(result);
   return mergeMatchResults(result);
 }

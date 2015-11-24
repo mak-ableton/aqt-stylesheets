@@ -83,7 +83,9 @@ class IStyleMatchTree
 std::unique_ptr<IStyleMatchTree> createMatchTree(
   const StyleSheet& stylesheet, const StyleSheet& defaultStylesheet = StyleSheet());
 
-PropertyMap matchPath(const IStyleMatchTree* tree, const UiItemPath& path);
+PropertyMap matchPath(const IStyleMatchTree* tree,
+                      UiItemPath::const_iterator pathBegin,
+                      UiItemPath::const_iterator pathEnd);
 std::string describeMatchedPath(const IStyleMatchTree* tree, const UiItemPath& path);
 
 } // namespace stylesheets

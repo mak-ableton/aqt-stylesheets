@@ -200,9 +200,10 @@ QVariantList StyleEngine::availableStyles()
   return mStylesDir.availableStyleSheetNames();
 }
 
-PropertyMap StyleEngine::matchPath(const UiItemPath& path)
+PropertyMap StyleEngine::matchPath(UiItemPath::const_iterator pathBegin,
+                                   UiItemPath::const_iterator pathEnd)
 {
-  return aqt::stylesheets::matchPath(mpStyleTree.get(), path);
+  return aqt::stylesheets::matchPath(mpStyleTree.get(), pathBegin, pathEnd);
 }
 
 std::string StyleEngine::describeMatchedPath(const UiItemPath& path)
